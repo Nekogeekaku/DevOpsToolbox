@@ -1,0 +1,26 @@
+{
+  "name": "devopstoolbox",
+  "version": "1.0.0",
+  "description": "Contains a nodejs web application with various tools built from my experience to facilitate my work",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nekogeekaku/DevOpsToolbox.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nekogeekaku/DevOpsToolbox/issues"
+  },
+  "homepage": "https://github.com/Nekogeekaku/DevOpsToolbox#readme",
+  "dependencies": {
+    "axios": "^1.5.0",
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "ejs-mate": "^4.0.0",
+    "express": "^4.18.2"
+  }
+}
