@@ -9,7 +9,7 @@ class Plugin:
         return "projects"
     def cb(self):
         print("projects: this function list all available projects in a workspace.")
-    def run(self):
+    def run(self, args):
         print("running the plugin")
         with open('config/secrets.yml', 'r') as file:
             secrets = yaml.safe_load(file)
