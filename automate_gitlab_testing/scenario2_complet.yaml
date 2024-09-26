@@ -1,0 +1,76 @@
+variables:
+  API_URL: "https://gitlab.com/api/v4"
+  BEARER_TOKEN: "glpat-eiWMakeeYvoDvSxs_yWK"
+  USERNAME: 'Nekogeekaku'
+  DNS: 'gitlab.com'  
+  DEBUG_MODE: True
+
+actions:
+  - list_group:
+    id: "1"
+  - create_group:
+    id: "2"
+    params:
+      name: "SubGroup"
+      path: "SubGroup"
+      parent_id: 87926667 
+    artifact: 
+      path: "var1"
+      group: "group"
+
+  - create_group:
+    id: "3"
+    params:
+      name: "SubGroup2"
+      path: "SubGroup2"
+      parent_id: $var1.group.id
+    artifact: 
+      path: "var2"
+      group: "group"
+
+
+  - create_project_under_group:
+    id: "4"
+    params:
+      name: "Project"
+      namespace_id: $var2.group.id
+    artifact: 
+      path: "var3"
+      project: "project"
+
+
+  - append_to_delete:
+    id: "5"
+    params:
+      type: "groups"
+      id: $var1.group.id
+  - append_to_delete:
+    id: "6"
+    params:
+      type: "groups"
+      id: $var2.group.id
+  - append_to_delete:
+    id: "7"
+    params:
+      type: "projects"
+      id: $var3.project.id
+  - save_to_delete_file:
+    id: "8"
+    params:
+      filename: "to_delete.yaml"
+
+
+  - create_a_file_and_commit_in_project_repo:
+    id: "9"
+    params:
+      project_id: $var3.project.id
+      filename: "newfile.txt"
+      file_content: "Hello, GitLab!"
+      commit_message: "Some commit message"
+
+  - pull_project:
+    id: "10"
+    params:
+      project_id: $var3.project.id
+
+

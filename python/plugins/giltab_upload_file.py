@@ -11,23 +11,23 @@ class Plugin:
     def action(self):
         return "project"
     def sub_action(self):
-        return "create"
+        return "upload"
     def name(self):
-        return "project_create"
+        return "project_upload"
     def cb(self):
-        print("project_create: this function create a project in a workspace.")
+        print("project_upload: this function create a project in a workspace.")
     def run(self, args):
         arg_length=len(args)
         if (arg_length < 5):
-            print("Wrong number or argument for project_create")
+            print("Wrong number or argument for project_upload")
             quit()
         if (arg_length == 5 and args[4]== "help"):
             print("Create a project in a workspace.")
             print("--------------------------------")
-            print("toolbox gitlab project create workspace_id path name")
+            print("toolbox gitlab project upload workspace_id source destination")
             print("workspace_id: the id of the workspace to create the project into.")
-            print("path: the path of the project.")
-            print("name: the name of the project.")
+            print("source: path of the file to upload.")
+            print("destination: destination path.")
             quit()
         print("running the plugin")
         with open('config/secrets.yml', 'r') as file:

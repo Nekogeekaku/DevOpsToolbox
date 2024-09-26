@@ -1,0 +1,17 @@
+variables:
+  API_URL: "https://gitlab.com/api/v4"
+  BEARER_TOKEN: "glpat-eiWMakeeYvoDvSxs_yWK"
+  USERNAME: 'Nekogeekaku'
+  DNS: 'gitlab.com'  
+  DEBUG_MODE: True
+
+actions:
+
+
+  - pull_project:
+    id: "10"
+    params:
+      project_id: 58282719
+      
+
+

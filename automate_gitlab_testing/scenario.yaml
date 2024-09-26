@@ -1,0 +1,80 @@
+scenario:
+  - action: "init_config"
+  - action: "print_config"
+    params:
+      setting_name: 'api_url'
+  - action: "init_delete_dictionary"
+  - action: "init_group"
+  - action: "init_project"
+  - action: "init_gitutilities"
+ 
+  - action: "echo"
+    params:
+      text_to_echo: "-------------------- Creation of groups ----------------------------"
+  - action: "create_group"
+    params:
+      group_name: "MyRootGroup"
+    save_as: "data"
+  - action: "echo"
+    params:
+      text_to_echo: "data"
+
+  - action: "create_group"
+    params:
+      group_name: "SubGroup"
+      parent_id: 75764245 # mettre data si en interne Ce chiffre est celui de mon groupe de référence sur gitlab.com
+    save_as: "data"
+  - action: "echo"
+    params:
+      text_to_echo: "data"
+
+  - action: "echo"
+    params:
+      text_to_echo: "-------------------- Creation of projects ----------------------------"
+  - action: "create_project_under_group"
+    params:
+      project_name: "My first project"
+      group_data: "data"
+    save_as: "data"
+  - action: "echo"
+    params:
+      text_to_echo: "data"
+
+
+
+  - action: "save_to_delete"
+
+  - action: "echo"
+    params:
+      text_to_echo: "-------------------- Creation a file and commit ----------------------------"
+
+  - action: "create_a_file_and_commit_in_project_repo"
+    params:
+      project_data: "data"
+      filename: "newfile.txt"
+      file_content: "Hello, GitLab!"
+      commit_message: "Some commit message"
+    save_as: "data"
+
+  - action: "echo"
+    params:
+      text_to_echo: "data"
+
+
+
+
+  - action: "fetch_data"
+    params:
+      url: "https://dummyjson.com/products/1"
+    save_as: "data"
+
+  - action: "process_data"
+    params:
+      data: "data"
+      process_type: "filter"
+    save_as: "processed_data"
+
+  - action: "save_results"
+    params:
+      data: "processed_data"
+      destination: "output.json"

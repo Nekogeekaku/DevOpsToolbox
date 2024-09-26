@@ -15,15 +15,17 @@ for f in os.listdir(path):
 sys.path.pop(0)
 
 arg_length=len(sys.argv)
-if arg_length<2:
+if arg_length<4:
     print("Available plugins")
     for plugin in plugins.values():
         plugin.cb()
     quit()
 # display the functions and arguments
 else:
-    pluginname=sys.argv[1]
+    tool=sys.argv[1]
+    action=sys.argv[2]
+    sub_action=sys.argv[3]
     for plugin in plugins.values():
-        if (plugin.name()==pluginname):
+        if (plugin.tool()==tool and plugin.action()==action and plugin.sub_action()==sub_action):
             plugin.run(sys.argv)
    
